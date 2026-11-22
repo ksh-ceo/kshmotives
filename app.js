@@ -148,28 +148,49 @@
     var s = document.createElement("source"); s.src = src + "#t=0.1"; s.type = "video/mp4";
     s.addEventListener("error", function () { t.classList.add("missing"); t.disabled = true; });
     v.appendChild(s);
-    if (poster) { var im = new Image(); im.onload = function () { v.poster = poster; t.style.setProperty("--poster", "url(" + poster + ")"); t.classList.add("has-poster"); }; im.src = poster; }
+    // Обложка: показываем своей картинкой поверх видео (атрибут poster браузер прячет, как только загрузит кадр)
+    var pimg = document.createElement("img"); pimg.className = "poster"; pimg.alt = ""; pimg.decoding = "async";
+    var cv = null;
     if (t.classList.contains("v")) {
-      var cv = document.createElement("canvas"); cv.className = "bg"; cv.width = 36; cv.height = 64; t.appendChild(cv);
-      v.addEventListener("loadeddata", function () { try { cv.getContext("2d").drawImage(v, 0, 0, 36, 64); t.classList.add("has-bg"); } catch (e) {} }, { once: true });
+      cv = document.createElement("canvas"); cv.className = "bg"; cv.width = 36; cv.height = 64; t.appendChild(cv);
+      v.addEventListener("loadeddata", function () {
+        if (t.classList.contains("has-poster")) return;
+        try { cv.getContext("2d").drawImage(v, 0, 0, 36, 64); t.classList.add("has-bg"); } catch (e) {}
+      }, { once: true });
+    }
+    if (poster) {
+      var base = poster.replace(/\.[a-z0-9]+$/i, "");
+      var alt = base.replace(/^videos\//, "images/"), tries = [];
+      [base, alt].forEach(function (b) { [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG"].forEach(function (e) { tries.push(b + e); }); });
+      (function next() {
+        if (!tries.length) return;
+        var u = tries.shift(), im = new Image();
+        im.onload = function () {
+          pimg.src = u; t.dataset.posterOk = u; t.classList.add("has-poster");
+          if (cv) { try { var c = cv.getContext("2d"); c.drawImage(im, 0, 0, 36, 64); t.classList.add("has-bg"); } catch (e) {} }
+        };
+        im.onerror = next; im.src = u;
+      })();
     }
     var dur = document.createElement("span"); dur.className = "dur";
     v.addEventListener("loadedmetadata", function () { if (isFinite(v.duration)) { dur.textContent = fmt(v.duration); t.classList.add("has-dur"); } });
     var w = document.createElement("span"); w.className = "watch"; w.innerHTML = PLAY + "<span></span>";
     var ph = document.createElement("span"); ph.className = "ph"; ph.innerHTML = "<b></b>";
-    t.appendChild(v); t.appendChild(w); t.appendChild(dur); t.appendChild(ph);
+    t.appendChild(v); t.appendChild(pimg); t.appendChild(w); t.appendChild(dur); t.appendChild(ph);
     if (canHover) {
+      v.addEventListener("playing", function () { if (t.matches(":hover")) t.classList.add("previewing"); });
       t.addEventListener("pointerenter", function () { if (!t.classList.contains("missing")) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } });
-      t.addEventListener("pointerleave", function () { v.pause(); try { v.currentTime = 0.1; } catch (e) {} });
+      t.addEventListener("pointerleave", function () { t.classList.remove("previewing"); v.pause(); setTimeout(function () { try { v.currentTime = 0.1; } catch (e) {} }, 350); });
     }
-    t.addEventListener("click", function () { if (!t.classList.contains("missing")) { v.pause(); openLB(src, t.dataset.format, poster); } });
+    t.addEventListener("click", function () { if (!t.classList.contains("missing")) { v.pause(); t.classList.remove("previewing"); openLB(src, t.dataset.format, t.dataset.posterOk); } });
   });
 
   var lb = document.getElementById("lb"), lbv = lb.querySelector("video"), lastFocus = null;
   function openLB(src, format, poster) {
     lastFocus = document.activeElement;
     lb.classList.remove("h", "v"); lb.classList.add(format === "v" ? "v" : "h");
-    lbv.src = src; lbv.currentTime = 0;
+    if (poster) lbv.poster = poster; else lbv.removeAttribute("poster");
+    lbv.preload = "auto"; lbv.src = src; lbv.currentTime = 0;
     var pr = lbv.play(); if (pr && pr.catch) pr.catch(function () {});
     lb.classList.add("open"); lb.setAttribute("aria-hidden", "false");
     document.body.classList.add("lb-lock");
