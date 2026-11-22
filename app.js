@@ -146,7 +146,7 @@
       document.body.classList.add("swapping");
       setTimeout(function () {
         apply(lang); document.body.classList.remove("swapping");
-        Roll.spin(); TL.replay();
+        Roll.spin(); TL.replay(); WordSel.replay();
       }, 180);
     });
   });
@@ -250,6 +250,40 @@
       if (es[0].isIntersecting) Object.keys(links).forEach(function (k) { links[k].classList.remove("active"); });
     }, { rootMargin: "-45% 0px -50% 0px" }).observe(document.querySelector(".hero"));
   }
+
+  /* ---------- «Работы»: анимация выделения слова, как на iPhone ---------- */
+  var WordSel = (function () {
+    var head = document.querySelector("#works .sec-head"), h2 = head && head.querySelector("h2");
+    if (!h2) return { replay: function () {} };
+    var box = document.createElement("span"); box.className = "ws"; box.setAttribute("aria-hidden", "true");
+    box.innerHTML = '<span class="ws-hl"></span><i class="ws-h start"></i><i class="ws-h end"></i>';
+    head.insertBefore(box, h2);
+    var timers = [], busy = false, visible = false;
+    function measure() {
+      var r = document.createRange(); r.selectNodeContents(h2);
+      var a = r.getBoundingClientRect(), b = head.getBoundingClientRect();
+      box.style.left = (a.left - b.left - 3) + "px"; box.style.top = (a.top - b.top + a.height * 0.08) + "px";
+      box.style.width = (a.width + 6) + "px"; box.style.height = (a.height * 0.84) + "px";
+    }
+    function clear() { timers.forEach(clearTimeout); timers = []; box.className = "ws"; busy = false; }
+    function play() {
+      if (reduce || busy) return;
+      clear(); busy = true; measure();
+      void box.offsetWidth;
+      box.classList.add("a");                                   // курсор и ручка появляются
+      timers.push(setTimeout(function () { box.classList.add("b"); }, 380));   // выделение тянется по слову
+      timers.push(setTimeout(function () { box.classList.add("c"); }, 2600));  // выделение снимается
+      timers.push(setTimeout(clear, 3000));
+    }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) {
+      var v = es[0].isIntersecting;
+      if (v && !visible) setTimeout(play, 250);
+      visible = v;
+    }, { threshold: 0.9 }).observe(h2);
+    h2.addEventListener("mouseenter", play);
+    addEventListener("resize", function () { if (busy) measure(); });
+    return { replay: function () { clear(); if (visible) play(); } };
+  })();
 
   /* ---------- Opening: calm focus-pull reveal ---------- */
   function ready() {
