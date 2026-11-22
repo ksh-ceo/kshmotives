@@ -38,7 +38,21 @@
         list.appendChild(li); items.push(li);
       });
       if (sr) sr.textContent = ws.join(", ");
+      fit();
     }
+    // Если самое длинное слово не влезает в строку рядом с «Делаю ролики, которые» —
+    // всегда переносим слово на отдельную строку, чтобы высота блока не менялась и страница не дёргалась
+    var pre = box.querySelector(".roll-pre");
+    function fit() {
+      if (!items.length) return;
+      box.classList.remove("stack");
+      var max = 0;
+      for (var i = 0; i < n; i++) max = Math.max(max, items[i].firstChild.getBoundingClientRect().width);
+      var gap = parseFloat(getComputedStyle(box).columnGap) || 0;
+      if (pre.getBoundingClientRect().width + gap + max + 2 > box.clientWidth) box.classList.add("stack");
+    }
+    var rt; addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(fit, 120); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     function spin() {
       clearTimeout(timer);
       if (reduce) { move(2 * n, 0); return; }
