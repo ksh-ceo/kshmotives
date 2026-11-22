@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kshmotives | Portfolio</title>
+<meta name="description" content="Артём — монтаж горизонтальных и вертикальных видео с анимациями и motion-графикой. Premiere Pro + After Effects.">
+<meta name="theme-color" content="#070A12">
+<!-- Превью ссылки в Telegram: после деплоя проверь, что адрес ниже совпадает с твоим -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="kshmotives | Portfolio">
+<meta property="og:description" content="Монтаж горизонтальных и вертикальных видео с анимациями и motion-графикой.">
+<meta property="og:image" content="https://kshmotives.vercel.app/og.png">
+<meta property="og:url" content="https://kshmotives.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Inter — запасной шрифт для тех, у кого нет SF Pro (Windows/Android). На iPhone/Mac и у тебя будет SF Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="logo">kshmotives</a>
+    <nav class="links" aria-label="Навигация">
+      <a href="#works" data-i18n="nav.works">Работы</a>
+      <a href="#about" data-i18n="nav.about">Обо мне</a>
+      <a href="#clients" data-i18n="nav.clients">Клиенты</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <span class="lang-pill"></span>
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn primary sm tg" href="https://t.me/kshmotives" target="_blank" rel="noopener">
+        <svg class="tg-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1 .4-1 1.6.1 1.9l4.6 1.4 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.9 3.6c.7.5 1.7.1 1.9-.7l3.1-14.7c.2-1-.8-1.8-1.6-1.4Zm-3.3 3.8-8.2 7.4-.3 3.2-1.4-4.5 9.4-6.4c.4-.3.8.1.5.3Z"/></svg>
+        <span>Telegram</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div class="hero-text">
+      <h1 class="hero-h"><span><span class="grad" data-i18n="hero.hi">Привет</span><span data-i18n="hero.name">, я Артём!</span></span></h1>
+      <p class="hero-sub rv" data-i18n="hero.sub">Монтирую горизонтальные и вертикальные видео с анимациями и motion-графикой</p>
+      <div class="roll rv">
+        <span class="roll-pre" data-i18n="roll.pre">Делаю ролики, которые</span>
+        <span class="roll-win" aria-hidden="true"><span class="roll-list"></span><span class="roll-bar"><i></i></span></span>
+        <span class="sr" id="roll-sr"></span>
+      </div>
+      <div class="actions rv">
+        <a class="btn primary tg" href="https://t.me/kshmotives" target="_blank" rel="noopener">
+          <svg class="tg-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1 .4-1 1.6.1 1.9l4.6 1.4 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.9 3.6c.7.5 1.7.1 1.9-.7l3.1-14.7c.2-1-.8-1.8-1.6-1.4Zm-3.3 3.8-8.2 7.4-.3 3.2-1.4-4.5 9.4-6.4c.4-.3.8.1.5.3Z"/></svg>
+          <span data-i18n="cta.contact">Связаться со мной</span>
+        </a>
+        <a class="btn ghost down" href="#works"><span data-i18n="cta.works">Мои работы</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m0 0-6-6m6 6 6-6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="tl">
+        <div class="tl-head">
+          <span class="badge">Pr</span><span class="tl-name">ksh preview</span>
+          <span class="tl-tc">00:00:00:00</span>
+        </div>
+        <div class="tl-grid">
+          <div class="tl-ruler"><span style="left:0">0:00</span><span style="left:33.333%">0:10</span><span style="left:66.666%">0:20</span></div>
+          <div class="tl-row"><span class="tl-lab">V2</span><div class="tl-track">
+            <span class="clip fx" style="--x:4%;--w:30%;--i:3"><b class="badge ae">Ae</b><em data-i18n="tl.titles">Титры</em></span>
+            <span class="clip fx" style="--x:52%;--w:34%;--i:5"><b class="badge ae">Ae</b><em data-i18n="tl.info">Инфографика</em></span>
+          </div></div>
+          <div class="tl-row"><span class="tl-lab">V1</span><div class="tl-track">
+            <span class="clip v" style="--x:0%;--w:21%;--i:0"><em data-i18n="tl.hook">Хук</em></span>
+            <span class="clip v" style="--x:21.6%;--w:42%;--i:1"><em data-i18n="tl.head">Говорящая голова</em></span>
+            <span class="clip v" style="--x:64.2%;--w:35.8%;--i:2"><em>B-roll</em></span>
+          </div></div>
+          <div class="tl-row"><span class="tl-lab">A1</span><div class="tl-track">
+            <span class="clip a" style="--x:0%;--w:100%;--i:1"><svg class="wave" viewBox="0 0 400 20" preserveAspectRatio="none"></svg></span>
+          </div></div>
+          <div class="tl-row"><span class="tl-lab">A2</span><div class="tl-track">
+            <span class="clip s" style="--x:18%;--w:9.5%;--i:4"><em>SFX</em></span>
+            <span class="clip s" style="--x:50%;--w:9.5%;--i:6"><em>SFX</em></span>
+            <span class="clip m" style="--x:62%;--w:38%;--i:7"><em data-i18n="tl.music">Музыка</em></span>
+          </div></div>
+          <div class="tl-ph"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" class="section wrap">
+    <div class="sec-head">
+      <h2 data-i18n="works.title">Работы</h2>
+      <p class="section-sub" data-i18n="works.sub">Нажмите на ролик, чтобы посмотреть со звуком</p>
+    </div>
+    <div class="works">
+      <article class="card work">
+        <button class="thumb h" type="button" data-src="videos/horizontal.mp4" data-poster="videos/horizontal.jpg" data-format="h"></button>
+        <div class="work-body">
+          <span class="kind" data-i18n="w1.kind">Горизонтальное видео</span>
+          <h3 data-i18n="w1.title">Оскар Хартманн | Название ролика</h3>
+        </div>
+      </article>
+      <article class="card work">
+        <button class="thumb v" type="button" data-src="videos/vertical.mp4" data-poster="videos/vertical.jpg" data-format="v"></button>
+        <div class="work-body">
+          <span class="kind" data-i18n="w2.kind">Вертикальное видео</span>
+          <h3 data-i18n="w2.title">Удержание внимания</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="section wrap">
+    <h2 data-i18n="about.title">Обо мне</h2>
+    <article class="card about">
+      <img src="images/about.jpg" alt="kshmotives" width="800" height="800">
+      <div class="about-body">
+        <h3 data-i18n="about.hi">Привет, меня зовут Артём!</h3>
+        <p data-i18n="about.p1">Я профессионально занимаюсь монтажом в программах Adobe Premiere Pro и Adobe After Effects.</p>
+        <p data-i18n="about.p2">Люблю работать с реальными заказами, монтирую как горизонтальные видео (YouTube), так и вертикальные (Reels, Shorts, TikTok).</p>
+        <p data-i18n="about.p3">Поэтому с радостью жду вашего заказа!</p>
+        <div class="actions">
+          <a class="btn primary tg" href="https://t.me/kshmotives" target="_blank" rel="noopener">
+            <svg class="tg-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1 .4-1 1.6.1 1.9l4.6 1.4 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.9 3.6c.7.5 1.7.1 1.9-.7l3.1-14.7c.2-1-.8-1.8-1.6-1.4Zm-3.3 3.8-8.2 7.4-.3 3.2-1.4-4.5 9.4-6.4c.4-.3.8.1.5.3Z"/></svg>
+            <span data-i18n="cta.order">Заказать монтаж</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="clients" class="section wrap">
+    <h2 data-i18n="clients.title">Мои клиенты</h2>
+    <p class="section-sub" data-i18n="clients.sub">Авторы, с которыми я работал, их проекты и отзывы</p>
+    <article class="card empty">
+      <div class="empty-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+      <h3 data-i18n="clients.empty">Пока здесь пусто</h3>
+      <p data-i18n="clients.emptyText">Я только открываю приём заказов — ваш проект может стать первым в этом списке.</p>
+      <a class="btn ghost" href="https://t.me/kshmotives" target="_blank" rel="noopener"><span data-i18n="cta.first">Стать первым клиентом</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7m0 0H8m9 0v9"/></svg></a>
+    </article>
+  </section>
+</main>
+
+<footer class="wrap"><div class="foot">
+  <span>kshmotives © 2026</span>
+  <a href="https://t.me/kshmotives" target="_blank" rel="noopener">t.me/kshmotives</a>
+</div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lb-back"></div>
+  <div class="lb-box"><video controls playsinline></video></div>
+  <button class="lb-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

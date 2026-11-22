@@ -1,0 +1,45 @@
+/* Тексты сайта на двух языках. Меняй здесь. */
+window.I18N = {
+  ru: {
+    "nav.works": "Работы", "nav.about": "Обо мне", "nav.clients": "Клиенты",
+    "hero.hi": "Привет", "hero.name": ", я Артём!",
+    "hero.sub": "Монтирую горизонтальные и вертикальные видео с анимациями и motion-графикой",
+    "roll.pre": "Делаю ролики, которые",
+    "roll.words": ["досматривают", "сохраняют", "пересылают друзьям", "приводят клиентов"],
+    "tl.titles": "Титры", "tl.info": "Инфографика", "tl.hook": "Хук", "tl.head": "Говорящая голова", "tl.music": "Музыка",
+    "cta.contact": "Связаться со мной", "cta.works": "Мои работы", "cta.order": "Заказать монтаж", "cta.first": "Стать первым клиентом",
+    "works.title": "Работы", "works.sub": "Нажмите на ролик, чтобы посмотреть со звуком",
+    "w1.kind": "Горизонтальное видео", "w2.kind": "Вертикальное видео",
+    "w1.title": "Оскар Хартманн | А что такое предпринимательство?",
+    "w2.title": "Почему ролики не набирают просмотры?",
+    "about.title": "Обо мне", "about.hi": "Привет, меня зовут Артём!",
+    "about.p1": "Я профессионально занимаюсь монтажом в программах Adobe Premiere Pro и Adobe After Effects.",
+    "about.p2": "Люблю работать с реальными заказами, монтирую как горизонтальные видео (YouTube), так и вертикальные (Reels, Shorts, TikTok).",
+    "about.p3": "Поэтому с радостью жду вашего заказа!",
+    "clients.title": "Мои клиенты", "clients.sub": "Авторы, с которыми я работал, их проекты и отзывы",
+    "clients.empty": "Пока здесь пусто",
+    "clients.emptyText": "Я только открываю приём заказов — ваш проект может стать первым в этом списке.",
+    "video.soon": "Видео скоро появится", "video.play": "Смотреть", "video.close": "Закрыть"
+  },
+  en: {
+    "nav.works": "Works", "nav.about": "About", "nav.clients": "Clients",
+    "hero.hi": "Hi", "hero.name": ", I'm Artem!",
+    "hero.sub": "I edit horizontal and vertical videos with animation and motion graphics",
+    "roll.pre": "I make videos that",
+    "roll.words": ["get watched to the end", "get saved", "get shared", "bring in clients"],
+    "tl.titles": "Titles", "tl.info": "Infographics", "tl.hook": "Hook", "tl.head": "Talking head", "tl.music": "Music",
+    "cta.contact": "Contact me", "cta.works": "My works", "cta.order": "Order an edit", "cta.first": "Become the first client",
+    "works.title": "Works", "works.sub": "Click a video to watch it with sound",
+    "w1.kind": "Horizontal video", "w2.kind": "Vertical video",
+    "w1.title": "Oskar Hartmann | Video title",
+    "w2.title": "Audience retention",
+    "about.title": "About", "about.hi": "Hi, my name is Artem!",
+    "about.p1": "I edit professionally in Adobe Premiere Pro and Adobe After Effects.",
+    "about.p2": "I love working on real projects and edit both horizontal videos (YouTube) and vertical ones (Reels, Shorts, TikTok).",
+    "about.p3": "So I'm looking forward to your order!",
+    "clients.title": "My clients", "clients.sub": "Creators I've worked with, their projects and reviews",
+    "clients.empty": "Nothing here yet",
+    "clients.emptyText": "I'm just opening up for orders — your project could be the first one on this list.",
+    "video.soon": "Video coming soon", "video.play": "Watch", "video.close": "Close"
+  }
+};
